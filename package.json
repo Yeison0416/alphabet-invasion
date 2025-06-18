@@ -1,5 +1,5 @@
 {
-    "name": "webpack-config",
+    "name": "alphabet-invasion",
     "version": "1.0.0",
     "description": "",
     "private": true,
@@ -11,15 +11,15 @@
     },
     "repository": {
         "type": "git",
-        "url": "git+https://github.com/Yeison0416/webpack-config.git"
+        "url": "git+https://github.com/Yeison0416/alphabet-invasion.git"
     },
     "keywords": [],
-    "author": "Yeison Steven Sanchez Figueroa",
+    "author": "Yeison Sanchez",
     "license": "ISC",
     "bugs": {
-        "url": "https://github.com/Yeison0416/webpack-config/issues"
+        "url": "https://github.com/Yeison0416/alphabet-invasion/issues"
     },
-    "homepage": "https://github.com/Yeison0416/webpack-config#readme",
+    "homepage": "https://github.com/Yeison0416/alphabet-invasion#readme",
     "devDependencies": {
         "@babel/core": "^7.24.7",
         "@babel/eslint-parser": "^7.24.8",
@@ -31,6 +31,7 @@
         "css-minimizer-webpack-plugin": "^7.0.0",
         "eslint": "^8.57.0",
         "eslint-webpack-plugin": "^4.2.0",
+        "handlebars-loader": "^1.7.3",
         "html-loader": "^5.0.0",
         "html-webpack-plugin": "^5.6.0",
         "mini-css-extract-plugin": "^2.9.0",
@@ -46,6 +47,8 @@
         "webpack-merge": "^6.0.1"
     },
     "dependencies": {
-        "reset-css": "^5.0.2"
+        "@fortawesome/fontawesome-free": "^6.7.2",
+        "reset-css": "^5.0.2",
+        "rxjs": "^7.8.2"
     }
 }
