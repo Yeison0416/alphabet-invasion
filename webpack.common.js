@@ -4,6 +4,9 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const StyleLintPlugin = require('stylelint-webpack-plugin');
 
 const path = require('path');
+const glob = require('glob');
+
+const allPartials = glob.sync(path.join(__dirname, 'src/**/!(_)*.hbs')).map((file) => path.dirname(file));
 
 module.exports = {
     entry: {
@@ -49,7 +52,7 @@ module.exports = {
                 loader: 'handlebars-loader',
                 options: {
                     minimize: true,
-                    partialDirs: [],
+                    partialDirs: allPartials,
                 },
             },
         ],
