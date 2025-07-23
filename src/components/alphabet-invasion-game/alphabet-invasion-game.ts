@@ -1,17 +1,22 @@
 import template from './alphabet-invasion-game.hbs';
+import { LettersRain } from './letters-rain/letters-rain';
 
 type AlphabetInvasionGame = {
     readonly type: string;
-    run: () => void;
+    startGame: () => void;
 };
 
-export function AlphabetInvasionGame(node: HTMLElement): AlphabetInvasionGame {
+export function AlphabetInvasionGame(appRootNode: HTMLElement): AlphabetInvasionGame {
     const alphabetInvasionGameTemplate = template();
-    node.innerHTML = alphabetInvasionGameTemplate;
+    appRootNode.innerHTML = alphabetInvasionGameTemplate;
+
+    const lettersRain = LettersRain();
 
     const state = {
         type: 'alphabet-invasion-game',
-        run: () => {},
+        startGame: () => {
+            lettersRain.startLettersRain();
+        },
     };
 
     return Object.assign({}, state);

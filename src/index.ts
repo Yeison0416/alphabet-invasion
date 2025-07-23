@@ -7,6 +7,7 @@ function Game() {
         run() {
             const appRootElement: HTMLElement = document.getElementById('app-root')! as HTMLElement;
             const alphabetInvasionGame = AlphabetInvasionGame(appRootElement);
+            alphabetInvasionGame.startGame();
         },
     };
 }
