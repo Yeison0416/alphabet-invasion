@@ -1,6 +1,12 @@
-.alphabet-invasion-game {
+.alphabet-invasion-game-wrapper {
 	display: flex;
 	justify-content: center;
 	align-items: center;
 	height: 100vh;
+	flex-direction: column;
+
+	.boards {
+		display: flex;
+		gap: 10px;
+	}
 }
