@@ -41,11 +41,11 @@ Subscriptions are properly managed with RxJS to avoid memory leaks.
 # 🚀 Getting Started
 1. Clone the repo
 git clone https://github.com/your-username/alphabet-invasion-game.git
-cd alphabet-invasion-game
+`cd alphabet-invasion-game`
 
 2. Install dependencies
-npm install
+   `npm install`
 
 3. Run the project
-npm start
+   `npm start`
 
