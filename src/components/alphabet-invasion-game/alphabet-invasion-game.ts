@@ -8,7 +8,7 @@ import { PanelScore } from '../panel-score/panel-score';
 import { gameState$, GameState } from './game-state/game-state';
 import { Letter, Letters } from '../../types/letters/letters';
 
-import { fromEvent, startWith, map, filter, BehaviorSubject, switchMap, interval, scan, combineLatest, takeWhile } from 'rxjs';
+import { fromEvent, startWith, map, filter, BehaviorSubject, switchMap, interval, scan, combineLatest, takeWhile, Subscription } from 'rxjs';
 
 type AlphabetInvasionGame = {
     readonly type: string;
@@ -30,6 +30,7 @@ export function AlphabetInvasionGame(appRootNode: HTMLElement): AlphabetInvasion
     const gameOver = GameOver();
     const { gameWidth, endThreshold } = gameState$.getState();
     const intervalSubject$ = new BehaviorSubject<number>(600);
+    let subscription: Subscription | null = null;
 
     const keys$ = fromEvent<KeyboardEvent>(document, 'keydown').pipe(
         map((e) => e.key.toLowerCase()),
@@ -60,13 +61,21 @@ export function AlphabetInvasionGame(appRootNode: HTMLElement): AlphabetInvasion
         return ALPHABET[Math.floor(Math.random() * ALPHABET.length)].toLocaleLowerCase();
     }
 
+    function stopAllSubscriptions() {
+        lettersRain.stopLettersRain();
+        panelScore.stopPanelScoreUpdate();
+        nextLevelPanel.stopNextLevelPanel();
+        gameOver.stopGameOverUpdate();
+        subscription?.unsubscribe();
+    }
+
     const state = {
         type: 'alphabet-invasion-game',
 
         startGame: () => {
             lettersRain.startLettersRain();
             panelScore.startPanelScoreUpdate();
-            nextLevelPanel.startPanelScoreUpdate();
+            nextLevelPanel.startNextLevelPanel();
             gameOver.startGameOverUpdate();
 
             const game$ = combineLatest([keys$, letters$]).pipe(
@@ -98,7 +107,13 @@ export function AlphabetInvasionGame(appRootNode: HTMLElement): AlphabetInvasion
                 takeWhile((gameState) => !gameState.isGameOver, true)
             );
 
-            game$.subscribe((gameState) => gameState$.update(gameState));
+            subscription = game$.subscribe((gameState) => {
+                gameState$.update(gameState);
+
+                if (gameState.isGameOver) {
+                    stopAllSubscriptions();
+                }
+            });
         },
     };
 
