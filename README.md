@@ -49,3 +49,10 @@ git clone https://github.com/your-username/alphabet-invasion-game.git
 3. Run the project
    `npm start`
 
+# Game Running
+
+
+https://github.com/user-attachments/assets/278e32d7-a916-4e9b-bc58-8f8cc8f29059
+
+
+
