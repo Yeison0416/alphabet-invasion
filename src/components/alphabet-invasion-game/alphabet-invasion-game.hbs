@@ -1,3 +1,8 @@
-<div class='alphabet-invasion-game'>
+<div class='alphabet-invasion-game-wrapper'>
+    <div class="boards">
+        {{> next-level-panel level=level}}
+        {{> panel-score score=score}}
+    </div>
     {{> letters-rain}}
+    {{> game-over}}
 </div>
