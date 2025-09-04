@@ -1,5 +1,5 @@
 # 🎮 Alphabet Invasion Game
-An interactive typing game built with vanilla JavaScript, Handlebars templates, and RxJS.
+An interactive typing game built with TypeScript, Handlebars templates, and RxJS.
 Your goal is to prevent falling letters from reaching the bottom of the game board by typing them before it’s too late.
 
 # ✨ Features
